@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import createMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
+import rehypePrettyCode from 'rehype-pretty-code';
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.1.70'],
@@ -8,7 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.discordapp.com',
+        hostname: '**',
       },
       {
         protocol: 'https',

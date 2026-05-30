@@ -1,8 +1,6 @@
 "use client";
 import {
-  MessageSquarePlus,
-  LayoutGrid,
-  LayoutList
+  MessageSquarePlus
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { authClient } from "@/libs/auth-client";
@@ -10,7 +8,6 @@ import { NewPostModal } from "@/components/suggestionModal";
 import axios from "axios";
 import { AuthSession, Suggestion } from "@/types/types";
 import { SuggestionCard } from "@/components/suggestionCard";
-import CategorySheet from "@/components/mobileSheet";
 import { hasManagementAccess } from "../libs/permissions";
 import { LoginModal } from "@/components/loginModal";
 
@@ -49,9 +46,6 @@ export default function Home() {
   }, []);
 
   const user = session?.data?.user;
-  const manageAccess = session?.data
-    ? (hasManagementAccess(session) ?? false)
-    : false;
 
   const filtered = suggestions.filter(
     (s) => activeCategory === "all" || s.category === activeCategory,
