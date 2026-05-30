@@ -19,7 +19,6 @@ export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [session, setSession] = useState<AuthSession | null>(null);
-  const [isGrid, setIsGrid] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
 
   const STATUS_COLUMNS = [
@@ -47,17 +46,6 @@ export default function Home() {
 
   useEffect(() => {
     authClient.getSession().then((s) => setSession(s as AuthSession));
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      if (window.innerWidth < 640) {
-        setIsGrid(true);
-      }
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const user = session?.data?.user;
@@ -99,20 +87,6 @@ export default function Home() {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center gap-1 p-1 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <button
-                onClick={() => setIsGrid(false)}
-                className={`p-1.5 rounded-md transition-colors ${!isGrid ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm" : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"}`}
-              >
-                <LayoutList className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => setIsGrid(true)}
-                className={`p-1.5 rounded-md transition-colors ${isGrid ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm" : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"}`}
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-              </button>
-            </div>
             {user ? (
               <button
                 onClick={() => setModalOpen(true)}
@@ -130,17 +104,6 @@ export default function Home() {
               </button>
             )}
           </div>
-        </div>
-
-        <div className="flex items-center justify-between md:hidden">
-          <CategorySheet
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-            isAdmin={manageAccess}
-          />
-          <p className="text-xs text-zinc-400">
-            {filtered.length} {filtered.length === 1 ? "post" : "posts"}
-          </p>
         </div>
 
         <div className="flex gap-8 justify-center items-start w-full">

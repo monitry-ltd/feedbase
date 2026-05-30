@@ -15,7 +15,7 @@ const components: MDXComponents = {
     <h4 className="text-base font-semibold text-foreground mt-4 mb-1">{children}</h4>
   ),
   p: ({ children }) => (
-    <p className="text-sm text-muted-foreground leading-7 mb-4">{children}</p>
+    <p className="text-sm text-muted-foreground leading-7 mb-2">{children}</p>
   ),
   a: ({ children, href }) => (
     <a
