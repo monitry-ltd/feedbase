@@ -12,7 +12,7 @@ export function BanCheck() {
     authClient.getSession().then((s) => {
       const session = s as AuthSession;
       if (session?.data?.user?.banned) {
-        router.push("https://zipline.bloxhillstores.co.uk/xsNF3y.mp4");
+        router.push("https://zipline.bloxhillstores.co.uk/xsNF3y.mp4"); // Redirect to a funny video if the user is banned
       }
     });
   }, [router]);
