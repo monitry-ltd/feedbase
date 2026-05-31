@@ -3,19 +3,19 @@ import { createAccessControl } from "better-auth/plugins";
 import { adminAc } from "better-auth/plugins/admin/access";
 
 const perms = {
-  management: ["manage", "ban"],
-  user: [...adminAc.statements.user, "suggest"],
+  management: ["manage", "ban", ...adminAc.statements.user],
+  user: ["suggest", "comment", "vote"],
   session: [...adminAc.statements.session],
 } as const;
 
 const ac = createAccessControl(perms);
 
 const guest = ac.newRole({
-  user: ["suggest"],
+  user: ["suggest", "comment", "vote"],
 });
 
 const contributor = ac.newRole({
-  user: ["suggest"],
+  user: ["suggest", "comment", "vote"],
 });
 
 const staff = ac.newRole({
@@ -28,12 +28,14 @@ const developer = ac.newRole({
 
 const admin = ac.newRole({
   management: ["manage", "ban"],
-  ...adminAc.statements,
+  user: ["suggest", "comment", "vote"],
+  session: [...adminAc.statements.session],
 });
 
 const owner = ac.newRole({
   management: ["manage", "ban"],
-  ...adminAc.statements,
+  user: ["suggest", "comment", "vote"],
+  session: [...adminAc.statements.session],
 });
 
 export const ALLOWED_ROLES: Record<string, boolean> = {
