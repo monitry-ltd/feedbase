@@ -238,12 +238,14 @@ export function CommentsSection({
       {currentUserId ? (
         <CommentInput onSubmit={handleNewComment} disabled={isPending} />
       ) : (
-        <p 
-          className="text-sm text-zinc-600 text-center py-2 hover:text-primary decoration-primary hover:underline cursor-pointer"
-          onClick={() => signIn("discord")}
-        >
-          Log in to leave a comment.
-        </p>
+        <div className="flex justify-center">
+          <p
+            className="text-sm text-zinc-600 text-center py-2 w-2xl hover:text-primary decoration-primary hover:underline cursor-pointer bg-zinc-500/10 rounded-lg mx-2xl border border-zinc-700/50"
+            onClick={() => signIn("discord")}
+          >
+            Log in to leave a comment.
+          </p>
+        </div>
       )}
     </div>
   );

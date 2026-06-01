@@ -9,11 +9,13 @@ import Link from "next/link";
 
 export function SuggestionCard({
   suggestion,
+  grid = false,
 }: {
   suggestion: Suggestion;
+  grid?: boolean;
 }) {
   return (
-    <Link href={`/suggestion/${suggestion.id}`}>
+    <Link href={`/feedback/${suggestion.id}`}>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
