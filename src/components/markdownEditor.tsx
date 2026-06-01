@@ -111,13 +111,11 @@ export function MarkdownEditor({
   value,
   onChange,
   placeholder = "Write something...",
-  maxLength = 1000,
   rows = 8,
 }: {
   value: string;
   onChange: (v: string) => void;
   placeholder?: string;
-  maxLength?: number;
   rows?: number;
 }) {
   const [preview, setPreview] = useState(false);
@@ -209,7 +207,7 @@ export function MarkdownEditor({
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             rows={rows}
-            maxLength={maxLength}
+            maxLength={2048}
             className="px-4 py-3 text-sm text-foreground bg-transparent placeholder:text-muted-foreground/40 focus:outline-none resize-none font-mono leading-7"
           />
         )}
@@ -228,7 +226,7 @@ export function MarkdownEditor({
           </span>
         )}
         <span className="text-xs text-muted-foreground/40">
-          {value.length}/{maxLength}
+          {value.length}/2048
         </span>
       </div>
     </div>

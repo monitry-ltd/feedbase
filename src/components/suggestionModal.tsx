@@ -104,6 +104,7 @@ function ModalContent({
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [slug, setSlug] = useState("");
   const [category, setCategory] =
     useState<Suggestion["category"]>("SUGGESTION");
 
@@ -120,11 +121,12 @@ function ModalContent({
     toast.loading("Creating post...", { id: "post-toast" });
 
     try {
-      await onSubmit({ title, description, category });
+      await onSubmit({ title, description, category, slug });
       toast.success("Post created!", { id: "post-toast" });
       setTitle("");
       setDescription("");
       setCategory("SUGGESTION");
+      setSlug("");
       onClose();
     } catch {
       toast.error("Something went wrong.", { id: "post-toast" });
@@ -189,7 +191,6 @@ function ModalContent({
         <MarkdownEditor
           onChange={setDescription}
           value={description}
-          maxLength={1000}
           rows={8}
         />
       </div>

@@ -47,7 +47,7 @@ export async function POST(request: Request) {
           embeds: [
             {
               title,
-              description,
+              description: description.length > 1021 ? description.substring(0, 1021) + "..." : description,
               color: 0xff2b87,
               url: `${process.env.BETTER_AUTH_URL}/feedback/${slug}`,
               author: {

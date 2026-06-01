@@ -166,7 +166,6 @@ export function EditSuggestionModal({
           value={description}
           onChange={setDescription}
           placeholder="Describe your idea..."
-          maxLength={1000}
           rows={8}
         />
       </div>
