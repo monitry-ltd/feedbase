@@ -66,7 +66,7 @@ const components: MDXComponents = {
 
     if (!className) {
       return (
-        <code className="bg-zinc-800 text-primary px-1.5 py-0.5 rounded-md text-xs font-mono border border-zinc-700">
+        <code className="text-white/95 px-1.5 py-0.5 rounded-md text-xs font-mono border border-zinc-700">
           {children}
         </code>
       );

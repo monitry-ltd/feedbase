@@ -70,7 +70,6 @@ const sections: Section[] = [
   },
   {
     title: "Acceptable use",
-    changed: true,
     blocks: [
       { type: "text", content: "You may not use Feedbase to:" },
       {
@@ -103,7 +102,6 @@ const sections: Section[] = [
   },
   {
     title: "Third-party services",
-    changed: true,
     blocks: [
       { type: "text", content: "Feedbase supports optional integrations with Discord, Slack, GitHub, and email providers. Your use of these services is governed by their respective terms of service and privacy policies." },
       { type: "warn", content: "Feedbase maintainers are not responsible for the availability, accuracy, conduct, or data handling of any third-party service." },
@@ -126,7 +124,6 @@ const sections: Section[] = [
   },
   {
     title: "Security responsibilities",
-    changed: true,
     blocks: [
       { type: "text", content: "Security patches and updates are published in the Feedbase GitHub repository. You are responsible for applying them in a timely manner." },
       { type: "warn", content: "Running an outdated version of Feedbase may expose your instance and your users' data to known vulnerabilities." },

@@ -77,7 +77,6 @@ const sections: Section[] = [
   },
   {
     title: "Third-party integrations",
-    changed: true,
     blocks: [
       { type: "text", content: "Feedbase supports optional integrations with Discord, Slack, GitHub, and email providers. When configured, data may flow to those services under their own privacy policies." },
       { type: "warn", content: "You are responsible for ensuring your use of third-party integrations complies with applicable laws and those services' terms." },
@@ -107,7 +106,6 @@ const sections: Section[] = [
   },
   {
     title: "Security",
-    changed: true,
     blocks: [
       { type: "text", content: "We take reasonable technical measures to protect the software from known vulnerabilities. Security releases are published on the GitHub repository." },
       { type: "warn", content: "You are responsible for keeping your instance up to date. Running outdated versions may expose your instance to known vulnerabilities." },
