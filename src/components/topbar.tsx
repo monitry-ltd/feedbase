@@ -308,7 +308,7 @@ export function Navbar() {
                     <button
                       onClick={handleSignIn}
                       disabled={loadingProvider}
-                      className="w-full bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-primary text-white px-4 py-2 rounded-xl text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {loadingProvider ? "Loading..." : "Login"}
                     </button>

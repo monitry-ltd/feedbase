@@ -19,7 +19,6 @@ export function SuggestionCard({
   votes: Vote[];
   hasSession: boolean;
 }) {
-  console.log(hasSession)
   return (
     <Link href={`/feedback/${suggestion.slug}`}>
       <motion.div
@@ -31,19 +30,28 @@ export function SuggestionCard({
           onClick={() => hasSession && onVote(suggestion.id)}
           className="flex flex-col items-center justify-center gap-1 px-1 py-2 border group hover:text-primary hover:bg-primary/10 transition-colors hover:border-primary/40 border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 rounded-lg min-w-11"
         >
-          <button className="transition-colors text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed" disabled={!hasSession}>
+          <button
+            className="transition-colors text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={!hasSession}
+          >
             <ChevronUp className="w-6 h-6 group-hover:text-primary transition-colors" />
           </button>
-          <span className="text-sm font-semibold leading-none">{votes?.length ?? 0}</span>
+          <span className="text-sm font-semibold leading-none">
+            {votes?.length ?? 0}
+          </span>
         </div>
         <div className="flex flex-col gap-2 flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="font-semibold text-sm">{suggestion.title}</h3>
           </div>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            {suggestion.description.length >= 1024
-              ? suggestion.description.substring(0, 1021) + "..."
-              : suggestion.description}
+            {grid
+              ? suggestion.description.length >= 256
+                ? `${suggestion.description.substring(0, 253)}...`
+                : suggestion.description
+              : suggestion.description.length >= 1024
+                ? `${suggestion.description.substring(0, 1021)}...`
+                : suggestion.description}
           </p>
           <div className="flex items-center gap-2 mt-1 flex-wrap">
             <Image

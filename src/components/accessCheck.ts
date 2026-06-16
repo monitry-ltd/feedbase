@@ -14,14 +14,9 @@ export function RoleCheck() {
       if (!session) return
       if (!session.data) return
 
-      const { user } = session?.data;
+      const { user } = session.data;
 
       if (!user) router.push("https://zipline.bloxhillstores.co.uk/xsNF3y.mp4");
-      if (!user.role) router.push("https://zipline.bloxhillstores.co.uk/xsNF3y.mp4");
-
-      if (user.role == "guest") {
-        router.push("https://zipline.bloxhillstores.co.uk/xsNF3y.mp4");
-      }
     });
   }, [router]);
 

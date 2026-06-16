@@ -5,6 +5,7 @@ import {
   Plus,
   LayoutGrid,
   LayoutList,
+  SlidersHorizontalIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +17,7 @@ import { AuthSession, Provider, Suggestion } from "@/types/types";
 import { SuggestionCard } from "@/components/suggestionCard";
 import { resolveOAuthClient } from "@/libs/resolveOAuth";
 import toast from "react-hot-toast";
+import { toggleVote } from "@/libs/suggestions";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -24,6 +26,7 @@ export default function Home() {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [isGrid, setIsGrid] = useState(false);
   const [provider, setProvider] = useState<Provider | null>(null);
+  const [isfilter, setisFilter] = useState(false);
   const [loadingProvider, setLoadingProvider] = useState(true);
 
   useEffect(() => {
@@ -124,11 +127,22 @@ export default function Home() {
               Share your ideas with the world!
             </p>
           </div>
+
           <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center gap-1 p-1 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+            <button
+              onClick={() => setisFilter(!isfilter)}
+              className={`p-2 rounded-lg transition-colors ${
+                isfilter
+                  ? "bg-white dark:bg-primary/20 text-zinc-900 dark:text-primary border dark:border-primary/60 shadow-sm"
+                  : "text-zinc-400 hover:text-zinc-600 border dark:border-whit dark:hover:text-zinc-300"
+              }`}
+            >
+              <SlidersHorizontalIcon className="w-4 h-4" />
+            </button>
+            <div className="hidden sm:flex items-center gap-1 p-1 rounded-lg bg-zinc-100 dark:bg-zinc-950 border border-white/20 dark:border-zinc-900">
               <button
                 onClick={() => setIsGrid(false)}
-                className={`p-1.5 rounded-md transition-colors ${!isGrid ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm" : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"}`}
+                className={`p-1.5 rounded-md transition-colors ${!isGrid ? "bg-white/20 dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm" : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"}`}
               >
                 <LayoutList className="w-3.5 h-3.5" />
               </button>
@@ -179,6 +193,9 @@ export default function Home() {
                       key={suggestion.id}
                       suggestion={suggestion}
                       grid={isGrid}
+                      hasSession={!!session}
+                      onVote={toggleVote}
+                      votes={suggestion.votes}
                     />
                   ))}
                 </motion.div>
