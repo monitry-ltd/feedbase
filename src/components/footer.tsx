@@ -6,31 +6,49 @@ import packageinfo from "@/../package.json";
 import Image from "next/image";
 import { FaDiscord } from "react-icons/fa";
 
-const GITHUB_URL = "https://github.com/breadddevv/feedbase";
+const GITHUB_URL = "https://github.com/monitry-ltd/";
+const MONITRY_LINK = "https://monitry.net";
 
 const footerLinks = {
   product: [
-    { name: "Features", href: "/features" },
-    { name: "Roadmap", href: "/roadmap", disabled: true },
-    { name: "Changelog", href: "/changelog", disabled: true },
-    { name: "Self-hosting", href: "/docs/self-hosting", disabled: true },
+    { name: "Monitry", href: "https://monitry.net", external: false },
+    { name: "Pricing", href: `${MONITRY_LINK}/pricing`, external: false },
+    {
+      name: "Demo",
+      href: `https://demo.monitry.net`,
+      external: true,
+    },
+    {
+      name: "Self-hosting",
+      href: "/docs/self-hosting",
+      external: true,
+      disabled: true,
+    },
   ],
   developers: [
-    { name: "Documentation", href: "https://docs.feedbase.app", external: true, disabled: true },
+    {
+      name: "Documentation",
+      href: "https://docs.monitry.net",
+      external: true,
+      disabled: true,
+    },
     { name: "GitHub", href: GITHUB_URL, external: true },
-    { name: "Contributing", href: `${GITHUB_URL}/blob/main/CONTRIBUTING.md`, external: true },
-    { name: "Releases", href: `${GITHUB_URL}/releases`, external: true },
   ],
   community: [
-    { name: "Discord", href: "/discord", disabled: true },
-    { name: "X / Twitter", href: "https://x.com/feedbase", external: true, disabled: true },
-    { name: "Blog", href: "/blog", disabled: true },
-    { name: "Support", href: "/support", disabled: true },
+    { name: "Discord", href: "https://discord.gg/UFPNjVPxgg", external: true },
+    {
+      name: "X / Twitter",
+      href: "https://x.com/Monitry_Ltd",
+      external: true,
+    },
+    { name: "Support", href: "/support", external: true },
   ],
   legal: [
-    { name: "Privacy policy", href: "/privacy" },
-    { name: "Terms of service", href: "/terms" },
-    { name: "MIT license", href: `${GITHUB_URL}/blob/main/LICENSE.TXT`, external: true },
+    { name: "Privacy policy", href: `${MONITRY_LINK}/legal/privacy-policy` },
+    {
+      name: "Terms of service",
+      href: `${MONITRY_LINK}/legal/terms-of-service`,
+    },
   ],
 };
 
@@ -70,11 +88,19 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2">
-              <Image width={32} height={32} src="/logo.png" alt="Feedbase" />
-              <span className="text-base font-semibold text-foreground">Feedbase</span>
+              <Image
+                width={32}
+                height={32}
+                src="https://cdn.monitry.net/u/Monitry%20Logo%20White.png"
+                alt="Monitry"
+              />
+              <span className="text-base font-semibold text-foreground">
+                Monitry
+              </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Open-source, self-hosted feedback boards for your users and team.
+              Professional status monitoring for modern teams. Keep your users
+              informed with real-time updates and beautiful status pages.
             </p>
             <Link
               href={GITHUB_URL}
@@ -89,41 +115,56 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">Product</h3>
+            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">
+              Product
+            </h3>
             <ul className="mt-4 flex flex-col gap-3">
               {footerLinks.product.map((link) => (
-                <li key={link.name}><FooterLink link={link} /></li>
+                <li key={link.name}>
+                  <FooterLink link={link} />
+                </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">Developers</h3>
+            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">
+              Developers
+            </h3>
             <ul className="mt-4 flex flex-col gap-3">
               {footerLinks.developers.map((link) => (
-                <li key={link.name}><FooterLink link={link} /></li>
+                <li key={link.name}>
+                  <FooterLink link={link} />
+                </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">Community</h3>
+            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">
+              Community
+            </h3>
             <ul className="mt-4 flex flex-col gap-3">
               {footerLinks.community.map((link) => (
-                <li key={link.name}><FooterLink link={link} /></li>
+                <li key={link.name}>
+                  <FooterLink link={link} />
+                </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">Legal</h3>
+            <h3 className="text-xs font-medium uppercase tracking-widest text-foreground">
+              Legal
+            </h3>
             <ul className="mt-4 flex flex-col gap-3">
               {footerLinks.legal.map((link) => (
-                <li key={link.name}><FooterLink link={link} /></li>
+                <li key={link.name}>
+                  <FooterLink link={link} />
+                </li>
               ))}
             </ul>
           </div>
-
         </div>
 
         {/* Bottom bar */}
@@ -136,14 +177,38 @@ export function Footer() {
               {`v${packageinfo.version}`}
             </span>
           </div>
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-muted-foreground">
+              &copy; {new Date().getFullYear()} Monitry LTD.{" "}
+              <a href="https://find-and-update.company-information.service.gov.uk/company/16977081">
+                Company no. 16977081
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-5">
-            <Link href="/discord" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Discord">
+            <Link
+              href="https://discord.gg/nkKUWWWDkt"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Discord"
+            >
               <FaDiscord className="h-5 w-5" />
             </Link>
-            <Link href="https://x.com/feedbase" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="X / Twitter">
+            <Link
+              href="https://x.com/feedbase"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="X / Twitter"
+            >
               <TbBrandX className="h-4 w-4" />
             </Link>
-            <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
+            <Link
+              href="https://github.com/breadddevv/feedbase"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub"
+            >
               <TbBrandGithubFilled className="h-5 w-5" />
             </Link>
           </div>

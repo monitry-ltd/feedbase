@@ -3,7 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import { BanCheck } from "@/components/banCheck";
 
 const geistSans = Inter({
@@ -17,17 +17,17 @@ const geistMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Feedbase",
-  description: "Make your feedback!",
+  title: "Monitry Feedbase",
+  description: "Contribute your feedback to Monitry and help us improve",
   openGraph: {
-    title: 'Feedbase',
-    description: 'Open source feedback management platform for product teams.',
+    title: "Monitry Feedbase",
+    description: "Contribute your feedback to Monitry and help us improve",
     images: [
       {
-        url: `${process.env.BETTER_AUTH_URL}/og.png`,
+        url: `https://cdn.monitry.net/u/3wCiKf.png`,
         width: 1291,
         height: 721,
-        alt: 'Feedbase',
+        alt: "Monitry Feedbase",
       },
     ],
   },
@@ -47,13 +47,16 @@ export default function RootLayout({
         <BanCheck />
         <Navbar />
         {children}
-        <Toaster position="bottom-center" toastOptions={{
-          style: {
-            background: "#1a1a1a",
-            color: "#fff",
-            borderRadius: "12px",
-          }
-        }} />
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "#1a1a1a",
+              color: "#fff",
+              borderRadius: "12px",
+            },
+          }}
+        />
         <Footer />
       </body>
     </html>

@@ -16,7 +16,7 @@ const navLinks = [
   { name: "Feedback", href: "/feedback" },
   { name: "Support Cases", href: "/support" },
   { name: "Bug Reports", href: "/bugs" },
-  { name: "Changelogs", href: "/changelogs" }
+  { name: "Changelogs", href: "/changelogs" },
 ];
 
 interface User {
@@ -190,7 +190,7 @@ export function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo.png"
+              src="https://cdn.monitry.net/u/Monitry%20Logo%20White.png"
               width={48}
               height={8}
               alt="Logo"
